@@ -46,7 +46,9 @@
                 <fieldset>
                     <legend class="form__label">Información personal</legend>
                     <div class="input-container">
-                        <input name="birth" id="birth" class="input" type="text" placeholder="Fecha de nacimento">
+                        <!--Importante el type="date" -->
+                        <!--Para poner una condicion como que solo se puedan registrar mayores de 18 años hay que usar logica de JS-->
+                        <input name="birth" id="birth" class="input" type="date" placeholder="Fecha de nacimento">
                         <label class="input-label" for="birth">Fecha de nacimiento</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
@@ -78,5 +80,7 @@
             </form>
         </section>
     </main>
+
+    <script src="JS/validaciones.js"></script>
 </body>
 </html>
