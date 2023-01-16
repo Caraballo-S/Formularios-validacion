@@ -48,7 +48,7 @@
                     <div class="input-container">
                         <!--Importante el type="date" -->
                         <!--Para poner una condicion como que solo se puedan registrar mayores de 18 años hay que usar logica de JS-->
-                        <input name="birth" id="birth" class="input" type="date" placeholder="Fecha de nacimento">
+                        <input name="birth" id="birth" class="input" type="date" placeholder="Fecha de nacimento" required data-tipo="nacimiento">
                         <label class="input-label" for="birth">Fecha de nacimiento</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
@@ -81,6 +81,6 @@
         </section>
     </main>
 
-    <script src="JS/validaciones.js"></script>
+    <script src="JS/app.js" type="module"></script> <!--necesitamos definir qu es un modulo, proque uso import-->
 </body>
 </html>

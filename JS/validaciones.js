@@ -1,12 +1,28 @@
-const inputNacimiento = document.querySelector("#birth");
+//¡EL QUERYSELECTOR YENDO A UN ID NO ES TA BUENA PRACTICA
+// const inputNacimiento = document.querySelector("#birth");
 
-
+//Ademas nosotrs queremos que nuestro addEventListenner lo podamos reutilizar
 
 //que evento es el quiero escuchar, cuando -salga- la fecha en este caso blur
 //El evento blur() se da cuando un elemento pierde el foco que obtuvo al ser clickado por el ratón o llegando por navegación tabular en palabras mas senciilas una vez elejido la fecha y precione otra cosa salta el evento.
-inputNacimiento.addEventListener("blur", (evento) => {
-    validarnacimiento(evento.target);
-});
+//inputNacimiento.addEventListener("blur", (evento) => {
+//    validarnacimiento(evento.target); });
+
+export function valida (input){
+    const tipoDeInput = input.dataset.tipo
+    //verificar si dentro de validadores existe el tipo de input
+    if(validadores[tipoDeInput]){
+        //y si existe le voy a pasar el parametro input
+        validadores[tipoDeInput](input)
+    }
+}
+
+//esto va hacer un objeto
+const validadores = {
+    nacimiento: (input) => validarnacimiento(input)
+};
+
+
 
 //esta funcion va a recibir nuestro input
 function validarnacimiento (input){
