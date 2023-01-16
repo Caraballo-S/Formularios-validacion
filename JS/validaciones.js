@@ -15,6 +15,13 @@ export function valida (input){
         //y si existe le voy a pasar el parametro input
         validadores[tipoDeInput](input)
     }
+
+    //este if hace que agregue o remueva una clase que hace que aparesza en rojo el input si no es valido
+    if(input.validity.valid){
+        input.parentElement.classList.remove("input-container--invalid")
+    }else{
+        input.parentElement.classList.add("input-container--invalid")
+    }
 }
 
 //esto va hacer un objeto
