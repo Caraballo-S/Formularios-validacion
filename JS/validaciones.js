@@ -24,6 +24,26 @@ export function valida (input){
     }
 }
 
+//objeto con los mensaje de error para cada tipo y situacion, con los errors del $0.validity
+//nosotros necesitamos ver es dependiendo del tipo de input que el usuario esta interactuando si esta valido o no esta valido, en caso de no estar valido debemos acceder a este objeto y a cada una de sus llaves dependiendo del input
+const mensajeDeError = {
+    name: {
+        valueMissing: "Este campo no puede estar vacio"
+    },
+    email: {
+        valueMissing: "Este campo no puede estar vacio",
+        typeMismatch: "El correo no es valido" // esto es el tipo 
+    },
+    password:{
+        valueMissing: "Este campo no puede estar vacio",
+        patterMissmatch: "Al menos 6 caracteres, maximo 12, debe tener una letra mayuscula, una letra miniscula, un numero y no puede contener caracteres especiales"// este en vez de poner el tip ponemo un patron por el patron que usamos en el html
+    },
+    nacimiento:{
+        valueMissing: "Este campo no puede estar vacio",
+        customError: "Debes tener al menos 18 años de edad"
+    }
+}
+
 //esto va hacer un objeto
 const validadores = {
     nacimiento: (input) => validarnacimiento(input)
