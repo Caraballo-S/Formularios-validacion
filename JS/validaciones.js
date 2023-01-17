@@ -18,13 +18,22 @@ export function valida (input){
 
     //este if hace que agregue o remueva una clase que hace que aparesza en rojo el input si no es valido
     if(input.validity.valid){
-        input.parentElement.classList.remove("input-container--invalid")
+        input.parentElement.classList.remove("input-container--invalid");
+        input.parentElement.querySelector(".input-message-error").innerHTML = ""; //seleccionar la clase que tiene el mensaje de error y dejarlo vacio
     }else{
-        input.parentElement.classList.add("input-container--invalid")
+        input.parentElement.classList.add("input-container--invalid");
+        input.parentElement.querySelector(".input-message-error").innerHTML = mostrarMensajeDeError(tipoDeInput, input)//seleccionar la clase que tiene el mensaje de error y llamar a una fucnion para mostrar el mensaje correcto
     }
 }
 
-//objeto con los mensaje de error para cada tipo y situacion, con los errors del $0.validity
+const tipoDeError = [
+    "valueMissing",
+    "typeMismatch",
+    "patternMismatch",
+    "customError",
+];
+
+//objeto con los mensaje de error para cada tipo y situacion, con los errores del $0.validity
 //nosotros necesitamos ver es dependiendo del tipo de input que el usuario esta interactuando si esta valido o no esta valido, en caso de no estar valido debemos acceder a este objeto y a cada una de sus llaves dependiendo del input
 const mensajeDeError = {
     name: {
@@ -36,18 +45,33 @@ const mensajeDeError = {
     },
     password:{
         valueMissing: "Este campo no puede estar vacio",
-        patterMissmatch: "Al menos 6 caracteres, maximo 12, debe tener una letra mayuscula, una letra miniscula, un numero y no puede contener caracteres especiales"// este en vez de poner el tip ponemo un patron por el patron que usamos en el html
+        patternMismatch: "Al menos 6 caracteres, maximo 12, debe tener una letra mayuscula, una letra miniscula, un numero y no puede contener caracteres especiales"// este en vez de poner el tip ponemo un patron por el patron que usamos en el html
     },
     nacimiento:{
         valueMissing: "Este campo no puede estar vacio",
         customError: "Debes tener al menos 18 años de edad"
-    }
-}
+    },
+};
 
 //esto va hacer un objeto
 const validadores = {
     nacimiento: (input) => validarnacimiento(input)
 };
+
+
+function mostrarMensajeDeError (tipoDeInput, input){
+    let mensaje = "";
+    tipoDeError.forEach((error) => {
+        console.log(error);
+        if(input.validity[error]){
+            console.log(input.validity[error]);
+            console.log(mensajeDeError[tipoDeInput][error])
+            mensaje = mensajeDeError[tipoDeInput][error];
+            
+        }
+    })
+    return mensaje;
+}
 
 
 
