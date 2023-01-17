@@ -26,7 +26,7 @@ export function valida (input){
     }
 }
 
-const tipoDeError = [
+const tipoDeErrores = [
     "valueMissing",
     "typeMismatch",
     "patternMismatch",
@@ -49,7 +49,7 @@ const mensajeDeError = {
     },
     nacimiento:{
         valueMissing: "Este campo no puede estar vacio",
-        customError: "Debes tener al menos 18 años de edad"
+        customError: "Debes tener al menos 18 años de edad",
     },
 };
 
@@ -61,7 +61,7 @@ const validadores = {
 
 function mostrarMensajeDeError (tipoDeInput, input){
     let mensaje = "";
-    tipoDeError.forEach((error) => {
+    tipoDeErrores.forEach((error) => {
         console.log(error);
         if(input.validity[error]){
             console.log(input.validity[error]);
