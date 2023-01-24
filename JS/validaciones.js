@@ -51,6 +51,10 @@ const mensajeDeError = {
         valueMissing: "Este campo no puede estar vacio",
         customError: "Debes tener al menos 18 años de edad",
     },
+    numero: {
+        valueMissing: "Este campo no puede estar vacio",
+        patternMismatch:"El formato requerido es xxxxxxxxxx 10 numeros"
+    }
 };
 
 //esto va hacer un objeto
